@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    #box1 {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: darkmagenta;
+      left: 100px;
+      top: 100px;
+      text-align: center;
+      line-height: 100px;
+      /* text-align:center意思就是说，让这个DIV里的文字水平居中，而line-height:100px;的意思是说，让DIV里面的每一行文字，占的高度为100PX（和那个DIV的高度一样） */
+    }
+
+    #box2 {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: darkorange;
+      left: 100px;
+      top: 220px;
+      text-align: center;
+      line-height: 100px;
+    }
+
+    #box3 {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: darkturquoise;
+      left: 100px;
+      top: 340px;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      document.onmousedown = function (event) {
+        event = event || window.event;
+        if (event.target.id == 'box1' || event.target.id == 'box2' || event.target.id == 'box3') {
+          let box = document.getElementById(event.target.id);
+          let ol = event.pageX - box.offsetLeft;
+          let ot = event.pageY - box.offsetTop;
+
+          document.onmousemove = function (event) {
+            event = event || window.event;
+            box.style.left = event.pageX - ol + 'px';
+            box.style.top = event.pageY - ot + 'px';
+          }
+
+          document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+          }
+        }
+        return false;
+      }
+
+    }
+  </script>
+</head>
+
+<body style="font-size: 35px;color:red">
+  <div id='box1'>LU</div>
+  <div id='box2'>ZU</div>
+  <div id='box3'>WEI</div>
+</body>
+
+</html>
