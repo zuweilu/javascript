@@ -1,2 +1,2 @@
-"# A small example of mouse dragging div"
+"# Some small examples written during the learning process"
 
