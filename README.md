@@ -1,2 +1,2 @@
-"# javascript_demo"
-"# study"
+"# A small example of mouse dragging div"
+
