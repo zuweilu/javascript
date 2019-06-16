@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<style>
+		#box {
+			position: absolute;
+			left: 100px;
+			top: 100px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			document.onkeydown = function (event) {
+				event = event || window.event;
+				let code = event.keyCode;
+				let box = document.getElementById("box");
+				let speed = 10;
+				switch (code) {
+					case 37: //left
+						{
+							box.style.left = box.offsetLeft - speed + 'px';
+						}
+						break;
+					case 38: //top
+						{
+							box.style.top = box.offsetTop - speed + 'px';
+						}
+						break;
+					case 39: //right
+						{
+							box.style.left = box.offsetLeft + speed + 'px';
+						}
+						break;
+					case 40: //bottom
+						{
+							box.style.top = box.offsetTop + speed + 'px';
+						}
+						break;
+					default:
+						break;
+				}
+
+			}
+		}</script>
+</head>
+
+<body>
+	<div id='box'></div>
+</body>
+
+</html>
