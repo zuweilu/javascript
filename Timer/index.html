@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    window.onload = function () {
+      let img = document.getElementById("img");
+      let startBtn = document.getElementById("start");
+      let endBtn = document.getElementById('end');
+      let arr = ['imgs/1.jpg', 'imgs/2.jpg', 'imgs/3.jpg', 'imgs/4.jpg'];
+      let index = 0;
+      let timer;
+      startBtn.onclick = function () {
+
+        //在开启之前，需要将上一个的定时器关闭。
+        clearInterval(timer);
+        timer = setInterval(function () {
+          index++;
+          // if (index >= arr.length)
+          //   index = 0;
+          index = index % arr.length;
+          img.src = arr[index];
+        }, 1000);
+      }
+
+      endBtn.onclick = function () {
+        clearInterval(timer);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <img id='img' src="imgs/1.jpg" />
+  <button id='start'>开始</button>
+  <button id='end'>结束</button>
+</body>
+
+</html>
