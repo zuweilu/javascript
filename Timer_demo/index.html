@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      left: 0px;
+    }
+
+    #separator {
+      width: 0px;
+      height: 0px;
+      border-left: 1px solid black;
+      left: 800px;
+      top: 0px;
+      position: absolute;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      let btn = document.getElementById('btn');
+      let box = document.getElementById('box');
+      let separator = document.getElementById('separator');
+      separator.style.height = document.documentElement.clientHeight + 'px';
+
+      let timer;
+      btn.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+          let oldLeft = box.offsetLeft;
+          let newLeft = oldLeft + 29;
+          if (newLeft > 800)
+            newLeft = 800;
+          box.style.left = newLeft + 'px';
+          if (newLeft === 800) {
+            clearInterval(timer);
+          }
+        }, 30);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button id='btn'>移动</button>
+  <div id="box"></div>
+  <div id='separator'></div>
+</body>
+
+</html>
