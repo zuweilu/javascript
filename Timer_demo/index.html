@@ -25,39 +25,109 @@
       width: 0px;
       height: 0px;
       border-left: 1px solid black;
-      left: 800px;
+      left: 500px;
       top: 0px;
       position: absolute;
     }
   </style>
 
   <script>
+
+    function move(obj, position) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function () {
+        switch (position) {
+          case 'left':
+            {
+              let oldLeft = obj.offsetLeft;
+              let newLeft = oldLeft - 29;
+              if (newLeft < 0)
+                newLeft = 0;
+              obj.style.left = newLeft + 'px';
+              if (newLeft === 0) {
+                clearInterval(obj.timer);
+              }
+            }
+            break;
+          case 'right':
+            {
+              let oldLeft = obj.offsetLeft;
+              let newLeft = oldLeft + 29;
+              if (newLeft > 500)
+                newLeft = 500;
+              obj.style.left = newLeft + 'px';
+              if (newLeft === 500) {
+                clearInterval(obj.timer);
+              }
+            }
+            break;
+          case 'top':
+            {
+              let oldTop = obj.offsetTop;
+              let newTop = oldTop - 29;
+              if (newTop < 0)
+                newTop = 0;
+              obj.style.top = newTop + 'px';
+              if (newTop === 0) {
+                clearInterval(obj.timer);
+              }
+            }
+            break;
+          case 'bottom':
+            {
+              let oldTop = obj.offsetTop;
+              let newTop = oldTop + 29;
+              if (newTop > 500)
+                newTop = 500;
+              obj.style.top = newTop + 'px';
+              if (newTop === 500) {
+                clearInterval(obj.timer);
+              }
+            }
+            break;
+          default:
+            break;
+        }
+
+      }, 30);
+    }
+
     window.onload = function () {
-      let btn = document.getElementById('btn');
-      let box = document.getElementById('box');
+      let btn_right = document.getElementById('right');
+      let btn_left = document.getElementById('left');
+      let btn_top = document.getElementById('top');
+      let btn_bottom = document.getElementById('bottom');
+
+      // set separator
       let separator = document.getElementById('separator');
       separator.style.height = document.documentElement.clientHeight + 'px';
 
-      let timer;
-      btn.onclick = function () {
-        clearInterval(timer);
-        timer = setInterval(function () {
-          let oldLeft = box.offsetLeft;
-          let newLeft = oldLeft + 29;
-          if (newLeft > 800)
-            newLeft = 800;
-          box.style.left = newLeft + 'px';
-          if (newLeft === 800) {
-            clearInterval(timer);
-          }
-        }, 30);
+      let box = document.getElementById('box');
+
+      btn_right.onclick = function () {
+        move(box, 'right');
+      }
+
+      btn_left.onclick = function () {
+        move(box, 'left');
+      }
+
+      btn_top.onclick = function () {
+        move(box, 'top');
+      }
+
+      btn_bottom.onclick = function () {
+        move(box, 'bottom');
       }
     }
   </script>
 </head>
 
 <body>
-  <button id='btn'>移动</button>
+  <button id='right'>Right</button>
+  <button id='left'>Left</button>
+  <button id='top'>Top</button>
+  <button id='bottom'>Bottom</button>
   <div id="box"></div>
   <div id='separator'></div>
 </body>
