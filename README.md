@@ -1,2 +1,2 @@
-"# javascript_demo"
-"# study"
+"# some samll examples written when learn js"
+
