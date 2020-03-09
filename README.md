@@ -1,2 +1,2 @@
-"# some samll examples written when learn js"
+"# some small examples written when learn js"
 
